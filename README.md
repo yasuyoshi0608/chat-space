@@ -4,35 +4,38 @@
 ## usersテーブル
 |Column|Type|Options|
 |------|----|-------|
-|user_id|string|null: false|
+|name|string|null: false|
 |email|string|null: false|
 |password|string|null: false|
 |nickname|string|null: false|
-|group_id|string|
 ### Association
+- has_many :groups_users
+- has_many :groups, throught:groups_users
 - has_many :messages
-- has_many :groups, :throught: :members
 
 ## groupsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|group_id|string|null: false|
+|group_name|string|null: false|
+|members_id|string|null: false,foreign_key: true|
 |user_id|string|null: false, foreign_key: true|
 ### Association
-- has_many :users
+- has_many :users, through: groiups_users
 - has_many :messages
-- has_many :members
+- has_many :groups_users
+
 ## messageテーブル
 |Column|Type|Options|
 |------|----|-------|
 |text|text|null: false|
+|image|string|
 |user_id|integer|null: false, foreign_key: true|
-|group_id|string|null: false, foreign_key: true|
+|group_id|integer|null: false, foreign_key: true|
 ### Association
 - belongs_to :group
 - belongs_to :user
 
-## membersテーブル
+## groups_usersテーブル
 |Column|Type|Options|
 |------|----|-------|
 |user_id|integer|null: false, foreign_key: true|
