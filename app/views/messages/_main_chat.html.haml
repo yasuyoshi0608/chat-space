@@ -1,0 +1,21 @@
+.chat-main
+  .chat-main-header
+    .chat-main-header__group--list
+      aihara
+    .chat-main-header__group--members 
+      member: hagumi
+    = link_to "Edit", class: 'chat-main-header__edit--btn'
+  .chat-main-contents
+    .chat-main-contents__message--form
+      hagumi
+    .chat-main-contents__message--time
+      2020/06/18(Thu) 20:10:16
+  .chat-main-contents__message--talk
+    何してるの？
+  %form.chat-main-message-form
+    %input.chat-main__message-form__text{type:"text", placeholder:"type a message"}
+    %in.chat-main__message-form__image
+      %f.label
+        = icon('far','image')
+        
+    %input.chat-main__submit-btn{type:"submit", value:"Send"}
