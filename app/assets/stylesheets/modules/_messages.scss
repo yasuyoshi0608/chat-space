@@ -16,9 +16,17 @@
     display: flex;
     justify-content: space-between;
     font-size: 16px;
-    li {
+    .chat-side__item {
+      display: flex;
+    }
+    .chat-side__item1__btn {
+      color: #eeeeee;
       line-height: 100px;
       margin: 0 2px;
+      text-decoration: none;
+      }
+    .chat-side__item2__btn {
+      color: #ffffff;
     }
   }
   &__group-form {
