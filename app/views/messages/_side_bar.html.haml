@@ -11,8 +11,8 @@
         %i.fa.fa-cog
   .chat-side__group-form
     - current_user.groups.each do |group|   
-      = link_to '#' do
+      = link_to group_messages_path(group) do
         %p.chat-side__group-form__group-names
           = group.name
         %p.chat-side__group-form__group-messages
-          まだメッセージはありません
+          =group.name

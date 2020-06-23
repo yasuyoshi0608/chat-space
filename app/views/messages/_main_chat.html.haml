@@ -1,21 +1,20 @@
 .chat-main
   .chat-main-header
     .chat-main-header__group--list
-      aihara
+      = @group.name
     .chat-main-header__group--members 
-      member: hagumi
+      Member:
+      - @group.group_users.each do |group_user|
+        = group_user.user.name
     = link_to "Edit", class: 'chat-main-header__edit--btn'
   .chat-main-contents
-    .chat-main-contents__message--form
-      hagumi
-    .chat-main-contents__message--time
-      2020/06/18(Thu) 20:10:16
-  .chat-main-contents__message--talk
-    何してるの？
-  %form.chat-main-message-form
-    %input.chat-main__message-form__text{type:"text", placeholder:"type a message"}
-    %in.chat-main__message-form__image
-      %f.label
-        = icon('far','image')
-        
-    %input.chat-main__submit-btn{type:"submit", value:"Send"}
+    = render @messages
+
+  .chat-main-message-form
+    = form_for [@group, @message] do |f|
+      .message-form
+        = f.text_field :content, class: 'message-form__text', placeholder: 'type a message'
+        = f.label :image, class: 'message-form__image' do
+          = icon('far', 'image', class: 'icon')
+          = f.file_field :image, class: 'hidden'
+      = f.submit 'Send', class: 'chat-main__submit-btn' 
