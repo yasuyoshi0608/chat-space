@@ -3,39 +3,39 @@ $(function(){
         if ( message.image ) {
           var html =
           `<div class="content">
-          <div class="user-date">
-          <div class="user-date__user-name">
-          ${message.user_name}
-          </div>
-          <div class="user-date__message-time">
-          ${message.created_at}
-          </div>
-          </div>
-          <div class="message-talk">
-          <p class="message-talk__content">
-          ${message.content}
-          </p>
-          
-          </div>
-          <img src=${message.image} >
+                <div class="user-date">
+                  <div class="user-date__user-name">
+                    ${message.user_name}
+                  </div>
+                  <div class="user-date__message-time">
+                    ${message.created_at}
+                  </div>
+                </div>
+                  <div class="message-talk">
+                    <p class="message-talk__content">
+                      ${message.content}
+                    </p>
+                  </div>
+              <img src=${message.image} >
           </div>`
-          
           return html;
         } else {
           var html =
           `<div class="content">
-          <div class="user-date">
-          <div class="user-date__user-name">
-          ${message.user_name}
-          </div>
-          <div class="user-date__message-time">
-          ${message.created_at}
-          </div>
-          </div>
-          <div class="message-talk">
-          <p class="message-talk__content">
-          ${message.content}
-          </p>`
+                <div class="user-date">
+                  <div class="user-date__user-name">
+                  ${message.user_name}
+                </div>
+                <div class="user-date__message-time">
+                  ${message.created_at}
+                </div>
+              </div>
+            <div class="message-talk">
+              <p class="message-talk__content">
+                ${message.content}
+              </p>
+            </div>
+          </div>`
           return html;
         };
       }
@@ -44,7 +44,6 @@ $(function(){
     var formData = new FormData(this);
     var url = $(this).attr('action');
     $('.chat-main__submit-btn').removeAttr('data-disable-with');
-        
     $.ajax({
       url: url,
       // 取得したurl
@@ -62,7 +61,6 @@ $(function(){
       $('form')[0].reset();
       $('.chat-main-contents').animate({ scrollTop: $('.chat-main-contents')[0].scrollHeight});
         
-      // 受け取ったHTMLを、appendメソッドによって.messagesというクラスが適用されているdiv要素の子要素の一番最後に追加します。また、フォームを空にする処理も書きます。
     })
     .fail(function() {
       alert("メッセージ送信に失敗しました");
